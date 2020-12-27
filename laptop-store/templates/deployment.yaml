@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: laptop
+  name: laptop
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: laptop
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: laptop
+    spec:
+      containers:
+      - image: bhavyabindela/laptop-store:{{ .Values.version }}
+        name: laptop-store
+        ports:
+        - containerPort: 1337
+        resources: {}
+status: {}
